@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Spirituality Quiz</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #eef2ff, #fdf2ff);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.question {
+  margin-bottom: 18px;
+  padding: 14px;
+  border-radius: 14px;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.q1, .q5, .q9, .q13 { background: #e8f0ff; }
+.q2, .q6, .q10, .q14 { background: #eafff1; }
+.q3, .q7, .q11, .q15 { background: #fff3e6; }
+.q4, .q8, .q12, .q16 { background: #f3e8ff; }
+
+label {
+  display: block;
+  padding: 8px;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button {
+  padding: 14px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #6a5acd, #8a2be2);
+  color: white;
+  display: block;
+  margin: 25px auto;
+}
+
+#result {
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 12px;
+  background: white;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+#legend {
+  margin-top: 10px;
+  font-size: 13px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.legend-item { display: flex; align-items: center; gap: 6px; }
+.legend-swatch { width: 18px; height: 4px; border-radius: 2px; }
+</style>
+</head>
+
+<body>
+
+<h1>Spirituality Profile Quiz</h1>
+
+<form id="quiz">
+
+<div class="question q1">
+<p>1. Music matters to me because through my music, I can get my feeling tuned up and my life in harmony.</p>
+<label><input type="radio" name="q1" value="5"> Agree strongly</label>
+<label><input type="radio" name="q1" value="4"> Agree a bit</label>
+<label><input type="radio" name="q1" value="2"> Disagree a bit</label>
+<label><input type="radio" name="q1" value="1"> Disagree completely</label>
+</div>
+
+<div class="question q2">
+<p>2. Other people matter to me because friends and family are the main meaning and purpose in my life.</p>
+<label><input type="radio" name="q2" value="5"> Agree strongly</label>
+<label><input type="radio" name="q2" value="4"> Agree a bit</label>
+<label><input type="radio" name="q2" value="2"> Disagree a bit</label>
+<label><input type="radio" name="q2" value="1"> Disagree completely</label>
+</div>
+
+<div class="question q3">
+<p>3. I'm not bothered about the natural world - animals, birds, streams and mountains. My way of life doesn't need the green.</p>
+<label><input type="radio" name="q3" value="1"> Agree strongly</label>
+<label><input type="radio" name="q3" value="2"> Agree a bit</label>
+<label><input type="radio" name="q3" value="4"> Disagree a bit</label>
+<label><input type="radio" name="q3" value="5"> Disagree completely</label>
+</div>
+
+<div class="question q4">
+<p>4. I believe in something more than just atoms and matter. I might not call this 'God', but there's more to life than science.</p>
+<label><input type="radio" name="q4" value="3"> Agree strongly</label>
+<label><input type="radio" name="q4" value="1"> Agree a bit</label>
+<label><input type="radio" name="q4" value="1"> Disagree a bit</label>
+<label><input type="radio" name="q4" value="3"> Disagree completely</label>
+</div>
+
+<div class="question q5">
+<p>5. Silence and time alone are important for me to help me feel okay about life. I like thinking deeply by myself.</p>
+<label><input type="radio" name="q5" value="5"> Agree strongly</label>
+<label><input type="radio" name="q5" value="4"> Agree a bit</label>
+<label><input type="radio" name="q5" value="2"> Disagree a bit</label>
+<label><input type="radio" name="q5" value="1"> Disagree completely</label>
+</div>
+
+<div class="question q6">
+<p>6. I don't believe that a partner and a love life makes you happy. You can be happy alone. 'Love' can make you unhappy too.</p>
+<label><input type="radio" name="q6" value="1"> Agree strongly</label>
+<label><input type="radio" name="q6" value="2"> Agree a bit</label>
+<label><input type="radio" name="q6" value="3"> Disagree a bit</label>
+<label><input type="radio" name="q6" value="5"> Disagree completely</label>
+</div>
+
+<div class="question q7">
+<p>7. It's interesting to find out about the world of nature, evolution, where we come from and how the body works. This is exciting.</p>
+<label><input type="radio" name="q7" value="4"> Agree strongly</label>
+<label><input type="radio" name="q7" value="3"> Agree a bit</label>
+<label><input type="radio" name="q7" value="2"> Disagree a bit</label>
+<label><input type="radio" name="q7" value="1"> Disagree completely</label>
+</div>
+
+<div class="question q8">
+<p>8. God doesn't exist. There's no such person. It's all in people's imagination. It's good to be certain about Atheism. It's right.</p>
+<label><input type="radio" name="q8" value="3"> Agree strongly</label>
+<label><input type="radio" name="q8" value="1"> Agree a bit</label>
+<label><input type="radio" name="q8" value="1"> Disagree a bit</label>
+<label><input type="radio" name="q8" value="3"> Disagree completely</label>
+</div>
+
+<div class="question q9">
+<p>9. Sometimes I am amazed at life: the ideas, passions and things I can do make me wonder: 'Why do I deserve this?'.</p>
+<label><input type="radio" name="q9" value="5"> Agree strongly</label>
+<label><input type="radio" name="q9" value="4"> Agree a bit</label>
+<label><input type="radio" name="q9" value="2"> Disagree a bit</label>
+<label><input type="radio" name="q9" value="1"> Disagree completely</label>
+</div>
+
+<div class="question q10">
+<p>10. If you have a successful family, then that's a successful life. One of my top wishes is: make a good family when I grow up.</p>
+<label><input type="radio" name="q10" value="5"> Agree strongly</label>
+<label><input type="radio" name="q10" value="3"> Agree a bit</label>
+<label><input type="radio" name="q10" value="2"> Disagree a bit</label>
+<label><input type="radio" name="q10" value="1"> Disagree completely</label>
+</div>
+
+<div class="question q11">
+<p>11. I get peace and calm from the outdoor life. I love the world of nature. River, wind, lightning and sea make me feel alive.</p>
+<label><input type="radio" name="q11" value="5"> Agree strongly</label>
+<label><input type="radio" name="q11" value="4"> Agree a bit</label>
+<label><input type="radio" name="q11" value="3"> Disagree a bit</label>
+<label><input type="radio" name="q11" value="1"> Disagree completely</label>
+</div>
+
+<div class="question q12">
+<p>12. I just don't care about God at all. I'm not really an atheist, but it simply doesn't bother me. I don't ever think about God.</p>
+<label><input type="radio" name="q12" value="1"> Agree strongly</label>
+<label><input type="radio" name="q12" value="3"> Agree a bit</label>
+<label><input type="radio" name="q12" value="3"> Disagree a bit</label>
+<label><input type="radio" name="q12" value="1"> Disagree completely</label>
+</div>
+
+<div class="question q13">
+<p>13. Being born is a gift. And a priceless gift too. I'm grateful for it.</p>
+<label><input type="radio" name="q13" value="5"> Agree strongly</label>
+<label><input type="radio" name="q13" value="4"> Agree a bit</label>
+<label><input type="radio" name="q13" value="1"> Disagree a bit</label>
+<label><input type="radio" name="q13" value="1"> Disagree completely</label>
+</div>
+
+<div class="question q14">
+<p>14. I am a good friend, and I have good friends.</p>
+<label><input type="radio" name="q14" value="5"> Agree strongly</label>
+<label><input type="radio" name="q14" value="3"> Agree a bit</label>
+<label><input type="radio" name="q14" value="2"> Disagree a bit</label>
+<label><input type="radio" name="q14" value="1"> Disagree completely</label>
+</div>
+
+<div class="question q15">
+<p>15. When we die, our bodies rot away, and go back to the dust we came from. This doesn't scare me. Flowers grow on graves.</p>
+<label><input type="radio" name="q15" value="4"> Agree strongly</label>
+<label><input type="radio" name="q15" value="1"> Agree a bit</label>
+<label><input type="radio" name="q15" value="1"> Disagree a bit</label>
+<label><input type="radio" name="q15" value="3"> Disagree completely</label>
+</div>
+
+<div class="question q16">
+<p>16. I have felt, at least once in my life, that I was in touch with a power or presence different to my 'everyday self'.</p>
+<label><input type="radio" name="q16" value="5"> Agree strongly</label>
+<label><input type="radio" name="q16" value="4"> Agree a bit</label>
+<label><input type="radio" name="q16" value="2"> Disagree a bit</label>
+<label><input type="radio" name="q16" value="1"> Disagree completely</label>
+</div>
+
+<button type="button" onclick="calculateScore()">Submit</button>
+
+</form>
+
+<div id="result"></div>
+<canvas id="spiritChart" width="500" height="500"></canvas>
+<div id="legend" style="display:none">
+  <div class="legend-item">
+    <div class="legend-swatch" style="background:rgba(106,90,205,0.7)"></div>
+    <span>Your result</span>
+  </div>
+  <div class="legend-item">
+    <div class="legend-swatch" style="background:rgba(255,140,0,0.85);border: 1.5px dashed rgba(255,140,0,0.85);box-sizing:border-box"></div>
+    <span>Group average (<span id="avgCount">0</span> responses)</span>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const supabaseUrl = "https://pniemjzaszgnfdwxqlhl.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBuaWVtanphc3pnbmZkd3hxbGhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExMzMyOTQsImV4cCI6MjA5NjcwOTI5NH0.Z6e8BpKDEr1MBzgXzTK5sgy7Yi6NGzYhdOqRKr_PWi0";
+const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+const max = { g1: 20, g2: 20, g3: 18, g4: 15 };
+const maxRadius = 150;
+const cx = 250, cy = 250;
+
+function drawDiamond(ctx, g1, g2, g3, g4, style) {
+  const top    = (g1 / max.g1) * maxRadius;
+  const right  = (g2 / max.g2) * maxRadius;
+  const bottom = (g3 / max.g3) * maxRadius;
+  const left   = (g4 / max.g4) * maxRadius;
+
+  ctx.beginPath();
+  ctx.moveTo(cx, cy - top);
+  ctx.lineTo(cx + right, cy);
+  ctx.lineTo(cx, cy + bottom);
+  ctx.lineTo(cx - left, cy);
+  ctx.closePath();
+
+  if (style.fill) { ctx.fillStyle = style.fill; ctx.fill(); }
+  ctx.strokeStyle = style.stroke;
+  ctx.lineWidth = style.lineWidth || 2;
+  if (style.dashed) ctx.setLineDash(style.dashed);
+  else ctx.setLineDash([]);
+  ctx.stroke();
+  ctx.setLineDash([]);
+}
+
+function renderChart(userScores, avgScores, count) {
+  const canvas = document.getElementById("spiritChart");
+  const ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Grid
+  ctx.strokeStyle = "#ddd";
+  ctx.lineWidth = 1;
+  for (let r = 30; r <= maxRadius; r += 30) {
+    ctx.beginPath();
+    ctx.moveTo(cx, cy - r);
+    ctx.lineTo(cx + r, cy);
+    ctx.lineTo(cx, cy + r);
+    ctx.lineTo(cx - r, cy);
+    ctx.closePath();
+    ctx.stroke();
+  }
+
+  // Axes
+  ctx.strokeStyle = "#aaa";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(cx, cy - maxRadius); ctx.lineTo(cx, cy + maxRadius);
+  ctx.moveTo(cx - maxRadius, cy); ctx.lineTo(cx + maxRadius, cy);
+  ctx.stroke();
+
+  // Average diamond (behind)
+  if (avgScores) {
+    drawDiamond(ctx, avgScores.g1, avgScores.g2, avgScores.g3, avgScores.g4, {
+      fill: "rgba(255,140,0,0.12)",
+      stroke: "rgba(255,140,0,0.85)",
+      lineWidth: 2.5,
+      dashed: [6, 4]
+    });
+  }
+
+  // User diamond (on top)
+  drawDiamond(ctx, userScores.g1, userScores.g2, userScores.g3, userScores.g4, {
+    fill: "rgba(106,90,205,0.35)",
+    stroke: "#6a5acd",
+    lineWidth: 3
+  });
+
+  // Labels
+  ctx.fillStyle = "#000";
+  ctx.font = "14px Arial";
+  ctx.fillText("Self", cx - 15, cy - maxRadius - 10);
+  ctx.fillText("Relationships", cx + maxRadius + 10, cy);
+  ctx.fillText("Earth", cx - 15, cy + maxRadius + 20);
+  ctx.fillText("Beyond", cx - maxRadius - 70, cy);
+
+  document.getElementById("legend").style.display = "flex";
+  if (avgScores) document.getElementById("avgCount").textContent = count;
+}
+
+async function calculateScore() {
+  let g1 = 0, g2 = 0, g3 = 0, g4 = 0;
+  for (let i = 1; i <= 16; i++) {
+    let selected = document.querySelector(`input[name="q${i}"]:checked`);
+    if (!selected) return alert("Please answer all questions");
+    let v = parseInt(selected.value);
+    if ([1,5,9,13].includes(i)) g1 += v;
+    if ([2,6,10,14].includes(i)) g2 += v;
+    if ([3,7,11,15].includes(i)) g3 += v;
+    if ([4,8,12,16].includes(i)) g4 += v;
+  }
+
+  let finalScore = g1 + g2 + g3 + g4;
+
+  // Save result
+  const { error } = await supabaseClient
+    .from("quiz_results")
+    .insert([{ g1, g2, g3, g4, final_score: finalScore }]);
+  if (error) console.log("Insert error:", error);
+
+  // Fetch all for average
+  let avgScores = null;
+  let count = 0;
+  try {
+    const { data } = await supabaseClient.from("quiz_results").select("g1,g2,g3,g4");
+    if (data && data.length > 0) {
+      count = data.length;
+      avgScores = {
+        g1: data.reduce((s, r) => s + r.g1, 0) / count,
+        g2: data.reduce((s, r) => s + r.g2, 0) / count,
+        g3: data.reduce((s, r) => s + r.g3, 0) / count,
+        g4: data.reduce((s, r) => s + r.g4, 0) / count,
+      };
+    }
+  } catch(e) { console.log("Avg fetch error:", e); }
+
+  renderChart({ g1, g2, g3, g4 }, avgScores, count);
+
+  let finalText = "";
+  if (finalScore >= 16 && finalScore <= 28) finalText = "16–28: You don't think being spiritual is important. You may find your life's meanings through very practical activity. You don't find thinking deeply about spiritual questions is worth the effort.";
+  else if (finalScore <= 42) finalText = "29–42: Some aspects of spirituality matter to you, but other ones don't. Your spiritual life may be connected to just one of the four elements of spirituality (self, relating, earth, God). Your way of life doesn't leave you much time for feeling and thinking deeply or reflectively. Try it some time - you might like it.";
+  else if (finalScore <= 58) finalText = "43–58: You are tuned in to spiritual questions. You find some (2 or 3) aspects of spiritual life important. You have many questions about life's mysteries to explore. Spiritual thinking and reflecting may help you find your own path in life.";
+  else finalText = "59–72: You're a very spiritual person. All aspects of spiritual life touch you in some ways. You are a deep thinker about the things of the spirit. The spirituality of self, of relationships, of the earth and of God (or the transcendent) all make a difference to you.";
+
+  document.getElementById("result").innerHTML =
+    `<b>Final Score:</b> ${finalScore} / 72<br><br>` +
+    `<b>Score Range:</b> ${finalText}<br><br>` +
+    `<b>Aspect Results:</b><br>` +
+    `Spirituality and your self: ${g1}${g1 > 12 ? "<br>Your spiritual sense gives a high value to the individual self." : ""}<br>` +
+    `Spirituality and relationships: ${g2}${g2 > 12 ? "<br>Relationships are important to you in spiritual life." : ""}<br>` +
+    `Spirituality of the earth: ${g3}${g3 > 12 ? "<br>You have an earthy spirituality, in touch with the 'green'." : ""}<br>` +
+    `Spirituality and the 'beyond': ${g4}${g4 > 12 ? "<br>God or the 'beyond' (the 'transcendent') is important to your spiritual life." : ""}<br>` +
+    (avgScores ? `<br><i>The dashed orange diamond shows the average of ${count} responses.</i>` : "");
+}
+</script>
+
+</body>
+</html>
