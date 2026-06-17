@@ -74,6 +74,37 @@ button {
 
 .legend-item { display: flex; align-items: center; gap: 6px; }
 .legend-swatch { width: 18px; height: 4px; border-radius: 2px; }
+
+#introPanel {
+  background: white;
+  border-radius: 14px;
+  border: 1px solid #ddd;
+  padding: 24px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+#introPanel h2 {
+  margin-top: 0;
+  color: #555;
+}
+
+#introPanel select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+
+#introPanel label {
+  font-weight: bold;
+  border: none;
+  padding: 0;
+  margin-bottom: 4px;
+  cursor: default;
+}
 </style>
 </head>
 
@@ -81,7 +112,37 @@ button {
 
 <h1>Spirituality Profile Quiz</h1>
 
-<form id="quiz">
+<!-- Step 1: Gender & Age -->
+<div id="introPanel">
+  <h2>Before you begin</h2>
+  <p>Please tell us a bit about yourself. This helps us show you how your results compare to others like you.</p>
+
+  <label for="gender">Gender:</label>
+  <select id="gender">
+    <option value="">Prefer not to say</option>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+    <option value="other">Other</option>
+  </select>
+
+  <label for="ageGroup">Age group:</label>
+  <select id="ageGroup">
+    <option value="">Prefer not to say</option>
+    <option value="0-9">0–9</option>
+    <option value="10-17">10–17</option>
+    <option value="18-24">18–24</option>
+    <option value="25-34">25–34</option>
+    <option value="35-44">35–44</option>
+    <option value="45-54">45–54</option>
+    <option value="55-65">55–65</option>
+    <option value="65+">65+</option>
+  </select>
+
+  <button type="button" onclick="startQuiz()">Start Quiz →</button>
+</div>
+
+<!-- Step 2: Quiz (hidden until step 1 done) -->
+<form id="quiz" style="display:none">
 
 <div class="question q1">
 <p>1. Music matters to me because through my music, I can get my feeling tuned up and my life in harmony.</p>
@@ -211,38 +272,12 @@ button {
 <label><input type="radio" name="q16" value="1"> Disagree completely</label>
 </div>
 
-<!-- Gender & Age -->
-<div class="question" style="background:#fff9e6">
-  <p><b>About you (optional)</b></p>
-
-  <label style="font-weight:bold;border:none;padding:0">Gender:</label>
-  <select id="gender" style="width:100%;padding:8px;border-radius:8px;border:1px solid #ccc;margin-bottom:12px;font-size:15px">
-    <option value="">Prefer not to say</option>
-    <option value="male">Male</option>
-    <option value="female">Female</option>
-    <option value="other">Other</option>
-  </select>
-
-  <label style="font-weight:bold;border:none;padding:0">Age group:</label>
-  <select id="ageGroup" style="width:100%;padding:8px;border-radius:8px;border:1px solid #ccc;font-size:15px">
-    <option value="">Prefer not to say</option>
-    <option value="0-9">0–9</option>
-    <option value="10-17">10–17</option>
-    <option value="18-24">18–24</option>
-    <option value="25-34">25–34</option>
-    <option value="35-44">35–44</option>
-    <option value="45-54">45–54</option>
-    <option value="55-65">55–65</option>
-    <option value="65+">65+</option>
-  </select>
-</div>
-
 <button type="button" onclick="calculateScore()">Submit</button>
 
 </form>
 
 <div id="result"></div>
-<canvas id="spiritChart" width="500" height="500"></canvas>
+<canvas id="spiritChart" width="500" height="500" style="display:none"></canvas>
 
 <div id="legend" style="display:none">
   <div class="legend-item">
@@ -255,7 +290,6 @@ button {
   </div>
 </div>
 
-<!-- Filter panel (shown after submit) -->
 <div id="filters" style="display:none; margin-top:16px; padding:14px; background:white; border-radius:12px; border:1px solid #ddd">
   <b>Filter group average by:</b><br><br>
 
@@ -292,6 +326,12 @@ const cx = 250, cy = 250;
 let allData = [];
 let userScores = null;
 
+function startQuiz() {
+  document.getElementById("introPanel").style.display = "none";
+  document.getElementById("quiz").style.display = "block";
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
 function drawDiamond(ctx, g1, g2, g3, g4, style) {
   const top    = (g1 / max.g1) * maxRadius;
   const right  = (g2 / max.g2) * maxRadius;
@@ -315,6 +355,7 @@ function drawDiamond(ctx, g1, g2, g3, g4, style) {
 
 function renderChart(avgScores, count) {
   const canvas = document.getElementById("spiritChart");
+  canvas.style.display = "block";
   const ctx = canvas.getContext("2d");
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -406,13 +447,11 @@ async function calculateScore() {
   const finalScore = g1 + g2 + g3 + g4;
   userScores = { g1, g2, g3, g4 };
 
-  // Save result
   const { error } = await supabaseClient
     .from("quiz_results")
     .insert([{ g1, g2, g3, g4, final_score: finalScore, gender, age_group: ageGroup }]);
   if (error) console.log("Insert error:", error);
 
-  // Fetch all rows for filtering
   try {
     const { data, error: fetchErr } = await supabaseClient
       .from("quiz_results")
@@ -421,7 +460,6 @@ async function calculateScore() {
     if (data) allData = data;
   } catch(e) { console.log("Fetch error:", e); }
 
-  // Show filters and wire up listeners
   document.getElementById("filters").style.display = "block";
   document.querySelectorAll(".genderFilter, .ageFilter").forEach(cb => {
     cb.addEventListener("change", applyFilters);
@@ -429,7 +467,6 @@ async function calculateScore() {
 
   applyFilters();
 
-  // Result text
   let finalText = "";
   if (finalScore <= 28) finalText = "16–28: You don't think being spiritual is important. You may find your life's meanings through very practical activity. You don't find thinking deeply about spiritual questions is worth the effort.";
   else if (finalScore <= 42) finalText = "29–42: Some aspects of spirituality matter to you, but other ones don't. Your spiritual life may be connected to just one of the four elements of spirituality (self, relating, earth, God). Your way of life doesn't leave you much time for feeling and thinking deeply or reflectively. Try it some time - you might like it.";
